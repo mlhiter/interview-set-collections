@@ -205,4 +205,26 @@ class MyPromise {
       resolve(value)
     })
   }
+  /**
+   * Promise.race实现
+   * 只要有一个promise rejected/fulfilled返回的promise就会rejected/fulfilled
+   */
+  static race(array) {
+    let hasValue = false
+    let hasError = false
+    return new MyPromise((resolve, reject) => {
+      for (let i = 0; i < array.length; i++) {
+        array[i].then(
+          (data) => {
+            !hasValue && !hasError && resolve(data)
+            hasValue = true
+          },
+          (error) => {
+            !hasValue && !hasError && reject(error)
+            hasError = true
+          }
+        )
+      }
+    })
+  }
 }
