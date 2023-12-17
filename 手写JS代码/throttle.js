@@ -1,5 +1,5 @@
 // 节流是事件频繁被触发之后，仍然按照一定频率触发
-// 参数：想要节流的函数，间隔，控制第一次是否立即执行
+// 参数：想要节流的函数，间隔，第一次是否立即执行，最后一次是否执行
 function throttle(fn, interval, leading = true, trailing = false) {
   let lastTime = 0
   let isLeading = true

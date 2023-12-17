@@ -11,7 +11,7 @@ function newFun() {
   // 1,新建一个对象
   var obj = {}
   // 2,设置原型链
-  var Constructor = [].shift.call(arguments)
+  var Constructor = Array.shift.call(arguments)
   obj.__proto__ = Constructor.prototype
   // 3,将构造函数的this指向新对象obj并执行构造函数代码
   var ret = Constructor.apply(obj, arguments)
