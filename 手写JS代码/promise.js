@@ -16,7 +16,7 @@ class MyPromise {
     if (this.PromiseStatus !== 'pending') return
     this.promiseValue = value
     this.PromiseStatus = 'resolved'
-    while (this.resolveCallbackArray.length) this.rejectCallbackArray.shift()()
+    while (this.resolveCallbackArray.length) this.resolveCallbackArray.shift()()
   }
 
   // 失败回调函数
@@ -228,3 +228,11 @@ class MyPromise {
     })
   }
 }
+
+const fn = new MyPromise((resolve, reject) => {
+  resolve(123)
+})
+fn.then((success, error) => {
+  success()
+  // console.log('success')
+})
